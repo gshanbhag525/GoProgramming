@@ -5,11 +5,11 @@ import "fmt"
 func main() {
 
 	//############## Basic For Loop Clause ##############
-	sum := 0
-	for i := 0 ;i < 10; i++ {
-		sum += i
-	}
-	fmt.Println(sum)
+	// sum := 0
+	// for i := 0 ;i < 10; i++ {
+	// 	sum += i
+	// }
+	// fmt.Println(sum)
 
 
 	//############## optional : init and post statements ##############
@@ -61,4 +61,87 @@ func main() {
 	// 	}
 	// }
 	
+	
+	//############## For loop with range clause ##############
+	
+	// slices
+	
+	nums := []string{"one", "two", "three"	}
+
+	for idx, num := range nums {
+		fmt.Printf("%d : %s\n", idx, num)
+	}
+
+	for idx := range nums {
+		fmt.Printf("%d \n", idx)
+	}
+
+	
+	for _, num := range nums {
+		fmt.Printf("%s \n", num)
+	}
+
+	// array
+
+	nums := [...]string{"one", "two", "three"	}
+
+	for idx, num := range nums {
+		fmt.Printf("%d : %s\n", idx, num)
+	}
+
+	for idx := range nums {
+		fmt.Printf("%d \n", idx)
+	}
+
+	for _, num := range nums {
+		fmt.Printf("%s \n", num)
+	}
+
+	for range nums {
+		fmt.Printf("gunesh")
+	}
+
+
+	// pointer to array
+	
+	nums := &[...]string{"one", "two", "three"	}
+
+	for idx, num := range *nums {
+		fmt.Printf("%d : %s\n", idx, num)
+	}
+
+	for idx, num := range nums {
+		fmt.Printf("%d : %s\n", idx, num)
+	}
+
+	// maps
+
+	m := map[string]int{"one" : 1, "two": 2, "three": 3	}
+
+	for k := range m {
+		fmt.Printf("keys : %q\n", k)
+	}
+
+	for k, v := range m {
+		fmt.Printf("keys : %q, value : %d\n", k, v)
+	}
+	
+	// short variable declaration and scoping
+
+	// idx variable declared outside for loop
+	m := []string{"zero","one", "two"}
+	var idx int
+	for idx = range m {
+	}
+	fmt.Println(idx)
+
+	// idx variable value not accessible outside the for loop
+	m := []string{"zero","one", "two"}
+	for idx := range m {
+	}
+	fmt.Println(idx)
+
+
+
 }
+
