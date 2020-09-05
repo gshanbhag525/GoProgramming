@@ -5,25 +5,30 @@ import (
 	"os"
 )
 
-func main(){
+func main() {
 
 	// defer fmt.Println("Hello ")
 	// defer fmt.Println("Gunesh ")
 	// defer fmt.Println("Shanbhag ")
-	
+	// name := "gunesh"
+	// defer fmt.Println(name)
+	// name = "lol"	
+
+	// f := createFile("")
 	f := createFile("/tmp/defer.txt")
 	defer closeFile(f)
 	writeFile(f)
-	
+
 }
 
 func createFile(p string) *os.File {
-	fmt.Println("creating")
+	defer fmt.Println("creating")
 	f, err := os.Create(p)
 	if err != nil {
 		panic(err)
 	}
 	return f
+
 }
 
 func writeFile(f *os.File) {
